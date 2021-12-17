@@ -24,7 +24,7 @@ pip3 install -r requirements
 python3 merge.py --source-dir test --target-dir output
 ```
 
-```
+```shell
 Copy to: output/Bibi Blocksberg - Bibi Blocksberg Lied.mp3
 Merge to: Bibi Blocksberg - Folge 1 - Hexen gibt es doch - Kapitel  01-05
 Merge to: Bibi Blocksberg - Folge 1 - Hexen gibt es doch - Kapitel  06-10
@@ -33,6 +33,16 @@ Merge to: Bibi Blocksberg - Folge 1 - Hexen gibt es doch - Kapitel  16-20
 Merge to: Bibi Blocksberg - Folge 1 - Hexen gibt es doch - Kapitel  21-25
 Merge to: Bibi Blocksberg - Folge 1 - Hexen gibt es doch - Kapitel  26-30
 Copy to: Bibi Blocksberg - Folge 1 - Hexen gibt es doch - Kapitel  31
+```
+
+### Process a whole directory
+
+If you want to process a whole directory in a recursive manner you run the script like this
+
+```shell
+# cd into the directory you want to process
+
+find . -type d -print0 | xargs -0 -i python3 <path-to-this-script>/merge.py --source-dir="{}" --target-dir="<absolute-target-dir>/{}"
 ```
 
 ## Links

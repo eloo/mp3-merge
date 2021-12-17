@@ -9,10 +9,10 @@ import click
 # Defaults
 default_batch_size = 5
 
-default_file_pattern = "*Kapitel*.mp3"
+default_file_pattern = "*Kapitel [0-9]*.mp3"
 default_copy_pattern = "*Lied.mp3"
 
-default_chapter_pattern = "(.*Kapitel )(\d+).*"
+default_chapter_pattern = "(.*Kapitel )(\d+)\.mp3"
 
 def create_target_dir(target_dir):
     Path(target_dir).mkdir(parents=True, exist_ok=True)
@@ -23,7 +23,7 @@ def copy_files(source_dir, target_dir, copy_pattern):
     for file in files:
         target_file = file.replace(source_dir + "/", target_dir + "/")
         print("Copy to: {}".format(target_file))
-        list_files = subprocess.run(["cp", file, target_file + ".mp3"])
+        list_files = subprocess.run(["cp", file, target_file])
 
 
 @click.command()
@@ -58,7 +58,7 @@ def merge(source_dir, target_dir, batch_size, chapter_pattern,merge_file_pattern
 
     files = sorted(glob.glob(source_dir + "/" + merge_file_pattern))
 
-    chapter_regex = re.compile(source_dir + "/" + chapter_pattern)
+    chapter_regex = re.compile(".*/" + chapter_pattern)
 
     for i in range(0, len(files), batch_size):
         batch = files[i : i + batch_size]
