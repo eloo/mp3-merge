@@ -45,6 +45,17 @@ If you want to process a whole directory in a recursive manner you run the scrip
 find . -type d -print0 | xargs -0 -i python3 <path-to-this-script>/merge.py --source-dir="{}" --target-dir="<absolute-target-dir>/{}"
 ```
 
+## Tips
+
+To move the files easily to your tonUINO sdcard you should checkout this shell script.  
+https://github.com/bahnfrei/tonuino-sdcard
+
+you can then copy the files like this 
+
+```shell
+./tonuino-sdcard -a -c "<source-folder-to-be-copied>" "<path-of-tonuino-sd-card>/<number-of-target-folder>" -v -n
+```
+
 ## Links
 
 - https://wiki.ubuntuusers.de/Archiv/Skripte/MP3_Zusammenf%C3%BChren/
