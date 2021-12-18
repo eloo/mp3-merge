@@ -64,7 +64,7 @@ def merge(source_dir, target_dir, batch_size, chapter_pattern,merge_file_pattern
         batch = files[i : i + batch_size]
         start_chapter = chapter_regex.match(batch[0]).group(2)
         end_chapter = chapter_regex.match(batch[-1]).group(2)
-        target_file_name = "{} {}-{}".format(
+        target_file_name = "{}{}-{}".format(
             chapter_regex.match(batch[0]).group(1), start_chapter, end_chapter
         )
         if len(batch) == 1:
